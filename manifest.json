@@ -1,0 +1,15 @@
+{
+  "name": "Singh Electric Service Centre",
+  "short_name": "SESC Rates",
+  "description": "SESC rate list — wholesale & retail electrical parts, Guwahati",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f2340",
+  "theme_color": "#0f2340",
+  "orientation": "portrait",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}

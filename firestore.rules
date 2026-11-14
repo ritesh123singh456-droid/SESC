@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == 'sesc@gmail.com';
+    }
+    // Rate list: sab padh sakte hain, sirf admin badal sakta hai
+    match /items/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    // Purchase price: sirf admin
+    match /costs/{id} {
+      allow read, write: if isAdmin();
+    }
+    // Active users count: har phone apna "last seen" likhta hai, sirf admin padhta hai
+    match /presence/{id} {
+      allow read, delete: if isAdmin();
+      allow create, update: if request.resource.data.keys().hasOnly(['t'])
+                            && request.resource.data.t == request.time;
+    }
+  }
+}
